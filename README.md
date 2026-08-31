@@ -1,2 +1,2 @@
-# G-n-rateur-d-une-vari-t-de-mot-de-passe
+#Password generator V2
 fichier rockyou version python
