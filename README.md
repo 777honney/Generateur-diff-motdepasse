@@ -17,7 +17,7 @@ La longueur du mot de passe : 3
 Document créé
 ```
 
-This will generate every possible 3-character combination in `ro.txt`, for example:
+This will generate every possible 3-character combination in `ro.txt` (this file name as to be change), for example:
 
 <img width="523" height="443" alt="image" src="https://github.com/user-attachments/assets/7a592068-2259-4bde-920e-1d290d6440a3" />
 
@@ -42,7 +42,5 @@ Beyond 5-6 characters, the script can fill up your disk and take a very long tim
 This kind of generator is typically used for **educational purposes or password-strength testing** (e.g. measuring brute-force time against a system you own or are authorized to test). It must not be used to access accounts or systems without authorization.
 
 ## Possible improvements
-- Add uppercase letters and special characters to the character set.
-- Add a progress bar to track generation.
-- Write in batches (buffered) to speed up disk writes.
+-  Optimize the speed up disk writes.
 - Automatically limit or warn if the requested length exceeds a reasonable threshold.
