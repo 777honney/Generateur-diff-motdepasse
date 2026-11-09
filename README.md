@@ -1,47 +1,48 @@
-#Password generator
-# Générateur de mots de passe (Wordlist Generator)
+# Wordlist Generator
 
 ## Description
-Ce script Python génère un fichier contenant **toutes les combinaisons possibles** de caractères pour une longueur de mot de passe donnée. Il utilise le module `itertools` pour produire ces combinaisons de façon exhaustive.
+This Python script generates a file containing **every possible combination** of characters for a given password length. It uses the `itertools` module to produce these combinations exhaustively.
 
-## Fonctionnement
-1. Le script demande à l'utilisateur la longueur du mot de passe souhaitée.
-2. Il utilise un jeu de caractères composé des lettres minuscules (`a-z`) et des chiffres (`0-9`), soit 36 caractères possibles.
-3. Grâce à `itertools.product`, il génère toutes les combinaisons possibles de cette longueur.
-4. Chaque combinaison est écrite dans un fichier `ro.txt`, une par ligne (qui peux être changé).
-5. Un message `"Document créé"` confirme la fin de l'exécution.
+## How it works
+1. The script asks the user for the desired password length.
+2. It uses a character set made of lowercase letters (`a-z`) and digits (`0-9`), i.e. 36 possible characters.
+3. Using `itertools.product`, it generates every possible combination of that length.
+4. Each combination is written to a file named `ro.txt`, one per line.
+5. A `"Document créé"` message confirms the script finished running.
 
-## Exemple d'utilisation
+## Example usage
 ```bash
 python script.py
 La longueur du mot de passe : 3
 Document créé
 ```
 
-Cela générera dans `ro.txt` toutes les combinaisons de 3 caractères possibles, par exemple :
+This will generate every possible 3-character combination in `ro.txt`, for example:
 
 <img width="523" height="443" alt="image" src="https://github.com/user-attachments/assets/7a592068-2259-4bde-920e-1d290d6440a3" />
 
 
-## ⚠️ Attention : croissance exponentielle
-Le nombre de combinaisons suit la formule `36^longueur`. Cela monte très vite :
+## ⚠️ Warning: exponential growth
+The number of combinations follows the formula `36^length`. It grows very fast:
 
-| Longueur | Nombre de combinaisons | Taille approximative |
-|----------|------------------------|-----------------------|
-| 3        | 46 656                 | quelques Ko            |
-| 4        | 1 679 616               | quelques Mo            |
-| 5        | ~60 millions            | plusieurs centaines de Mo |
-| 6        | ~2,1 milliards          | plusieurs dizaines de Go |
+| Length | Number of combinations | Approx. size |
+|--------|--------------------------|---------------|
+| 3      | 46,656                   | a few KB       |
+| 4      | 1,679,616                | a few MB       |
+| 5      | ~60 million              | several hundred MB |
+| 6      | ~2.1 billion             | tens of GB     |
 
-Au-delà de 5-6 caractères, le script peut saturer la mémoire disque et prendre un temps très long à s'exécuter.
+Beyond 5-6 characters, the script can fill up your disk and take a very long time to run.
 
-## Prérequis
+## Requirements
 - Python 3
-- Aucune dépendance externe (uniquement la bibliothèque standard `itertools`)
+- No external dependencies (only the standard library `itertools`)
 
-## Usage prévu
-Ce type de générateur est habituellement utilisé dans un cadre **pédagogique ou de test de robustesse de mots de passe** (par exemple pour mesurer le temps nécessaire à un brute-force sur un système que l'on possède ou qu'on est autorisé à tester). Il ne doit pas être utilisé pour accéder à des comptes ou systèmes sans autorisation.
+## Intended use
+This kind of generator is typically used for **educational purposes or password-strength testing** (e.g. measuring brute-force time against a system you own or are authorized to test). It must not be used to access accounts or systems without authorization.
 
-## Améliorations possibles
-- Optimiser la vitesse d'écriture sur disque.
-- Limiter/avertir automatiquement si la longueur demandée dépasse un seuil raisonnable.
+## Possible improvements
+- Add uppercase letters and special characters to the character set.
+- Add a progress bar to track generation.
+- Write in batches (buffered) to speed up disk writes.
+- Automatically limit or warn if the requested length exceeds a reasonable threshold.
